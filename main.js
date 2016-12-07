@@ -15,7 +15,6 @@
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
 function Foo (){
-
 }
 
 var foo = new Foo()
@@ -128,20 +127,34 @@ console.assert(dontTellNobody.squeal() === mySecret);
 function Key () {
 }
 
-function Safe (item, safekey) {
+function Safe (item, key) {
   this.bank = function() {
     return item
   }
-  this.key = function() {
-    return safekey.instance()
+  this.safeKey = function() {
+    return key
   }
-  Safe.prototype.unlock = function (){
-    if (this.key === rightKey) {
+  Safe.prototype.unlock = function (otherKey){
+    if (otherKey === this.safeKey()) {
       return this.bank()
     }
   }
 }
 
+// function Key () {
+// }
+//
+// function Safe (item, key) {
+//   this.bank = function(keycheck) {
+//     if (keycheck === key){
+//         return item
+//     }
+//   }
+//
+//   Safe.prototype.unlock = function (otherKey){
+//       return this.bank(otherKey)
+//     }
+// }
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
 
@@ -177,7 +190,11 @@ console.assert(safe.unlock(rightKey) === sensitive);
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
 
-
+function Validator (){
+  Validator.prototype.email = function(address){
+    
+  }
+}
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
 
